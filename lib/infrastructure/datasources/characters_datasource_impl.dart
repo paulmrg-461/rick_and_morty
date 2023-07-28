@@ -8,8 +8,9 @@ class CharactersDatasourceImpl implements CharactersDatasource {
 
   @override
   Future<List<CharacterEntity>> getCharacters() async {
-    final List response = await httpAdapter.httpGet(uri: '/character') as List;
-    return response
+    final response = await httpAdapter.httpGet(uri: '/character');
+    final List characters = response['results'] as List;
+    return characters
         .map((character) => CharacterEntity.fromJson(character))
         .toList();
   }

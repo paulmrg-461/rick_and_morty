@@ -5,7 +5,7 @@ import 'package:rick_and_morty/domain/repositories/repositories.dart';
 class CharactersRepositoryImpl implements CharactersRepository {
   final CharactersDatasource charactersDatasource;
 
-  CharactersRepositoryImpl(this.charactersDatasource);
+  CharactersRepositoryImpl({required this.charactersDatasource});
 
   @override
   Future<List<CharacterEntity>> getCharacters() =>
