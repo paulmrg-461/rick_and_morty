@@ -5,8 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:rick_and_morty/config/constants/environment.dart';
 import 'package:rick_and_morty/core/exceptions/api_exception.dart';
 
-class HttpRequest {
-  Future httpGetResponse({required String uri, bool withBaseUrl = true}) async {
+class HttpAdapter {
+  Future httpGet({required String uri, bool withBaseUrl = true}) async {
     try {
       final http.Response response = await http.get(
         Uri.parse(
