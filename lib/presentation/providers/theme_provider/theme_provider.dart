@@ -12,6 +12,7 @@ class ThemeProvider extends ChangeNotifier {
   ThemeData getTheme() => ThemeData(
         useMaterial3: true,
         brightness: isDarkMode ? Brightness.dark : Brightness.light,
-        colorSchemeSeed: Colors.deepPurple,
+        colorSchemeSeed: const Color(0xff08B3CB),
+        // colorSchemeSeed: const Color(0xff006387),
       );
 }
