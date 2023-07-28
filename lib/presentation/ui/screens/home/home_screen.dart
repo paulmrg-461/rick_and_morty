@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
               icon: const Icon(Icons.search_outlined)),
         ],
       ),
-      body: const EpisodesView(),
+      body: const LocationsView(),
     );
   }
 }
