@@ -1,6 +1,6 @@
 import 'package:rick_and_morty/core/helpers/http_adapter.dart';
 import 'package:rick_and_morty/domain/datasources/datasources.dart';
-import 'package:rick_and_morty/domain/entities/character_entity.dart';
+import 'package:rick_and_morty/domain/entities/entities.dart';
 
 class CharactersDatasourceImpl implements CharactersDatasource {
   final HttpAdapter httpAdapter = HttpAdapter();
