@@ -7,19 +7,27 @@ class CharactersProvider extends ChangeNotifier {
   final CharactersRepository charactersRepository;
   CharactersProvider({required this.charactersRepository});
 
+  int currentPage = 1;
   String errorMessage = '';
   bool initialLoading = true;
   List<CharacterEntity> characters = [];
 
   Future<void> getCharacters() async {
     try {
-      characters = await charactersRepository.getCharacters();
+      final List<CharacterEntity> newCharacters =
+          await charactersRepository.getCharactersByPage(currentPage);
+      characters.addAll(newCharacters);
     } on ApiException catch (e) {
       errorMessage = e.message;
     }
 
     initialLoading = false;
     notifyListeners();
+  }
+
+  void incrementCurrentPage() {
+    currentPage++;
+    getCharacters();
   }
 
   Future<void> reload() async {

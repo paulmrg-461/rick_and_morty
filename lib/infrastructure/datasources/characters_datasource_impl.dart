@@ -4,22 +4,12 @@ import 'package:rick_and_morty/domain/entities/character_entity.dart';
 
 class CharactersDatasourceImpl implements CharactersDatasource {
   final HttpAdapter httpAdapter = HttpAdapter();
-  final int itemsPerPage = 10;
-
-  @override
-  Future<List<CharacterEntity>> getCharacters() async {
-    final response = await httpAdapter.httpGet(uri: '/character');
-    final List characters = response['results'] as List;
-    return characters
-        .map((character) => CharacterEntity.fromJson(character))
-        .toList();
-  }
 
   @override
   Future<List<CharacterEntity>> getCharactersByPage(int page) async {
-    final List response =
-        await httpAdapter.httpGet(uri: '/character/?page=$page') as List;
-    return response
+    final response = await httpAdapter.httpGet(uri: '/character/?page=$page');
+    final List characters = response['results'] as List;
+    return characters
         .map((character) => CharacterEntity.fromJson(character))
         .toList();
   }

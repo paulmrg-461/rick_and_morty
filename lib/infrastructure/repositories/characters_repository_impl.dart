@@ -8,10 +8,6 @@ class CharactersRepositoryImpl implements CharactersRepository {
   CharactersRepositoryImpl({required this.charactersDatasource});
 
   @override
-  Future<List<CharacterEntity>> getCharacters() =>
-      charactersDatasource.getCharacters();
-
-  @override
   Future<List<CharacterEntity>> getCharactersByPage(int page) =>
       charactersDatasource.getCharactersByPage(page);
 }

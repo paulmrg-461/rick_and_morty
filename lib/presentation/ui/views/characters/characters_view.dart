@@ -14,7 +14,15 @@ class CharactersView extends StatelessWidget {
     return charactersProvider.initialLoading
         ? const Center(child: CircularProgressIndicator.adaptive())
         : (charactersProvider.errorMessage == '')
-            ? CardsListview(characters: charactersProvider.characters)
+            ? NotificationListener<ScrollNotification>(
+                onNotification: (scrollNotification) {
+                  if (scrollNotification is ScrollEndNotification &&
+                      scrollNotification.metrics.extentAfter == 0) {
+                    charactersProvider.incrementCurrentPage();
+                  }
+                  return true;
+                },
+                child: CardsListview(characters: charactersProvider.characters))
             : ErrorView(
                 errorMessage: charactersProvider.errorMessage,
                 callback: () => charactersProvider.reload(),
