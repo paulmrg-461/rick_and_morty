@@ -50,7 +50,7 @@ class ItemCard extends StatelessWidget {
                             text: character.gender ?? ''),
                         CharacteristicItem(
                             icon: Icons.monitor_heart,
-                            text: 'Status: ${character.status}'),
+                            text: character.status ?? ''),
                       ],
                     )
                   ],
