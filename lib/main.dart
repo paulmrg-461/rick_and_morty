@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
-        title: 'Cat Breeds App',
+        title: 'Rick & Morty App',
         initialRoute: AppRoutes.initialRoute,
         routes: AppRoutes.routes,
         theme: themeProvider.getTheme());
