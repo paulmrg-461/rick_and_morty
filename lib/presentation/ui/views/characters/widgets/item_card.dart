@@ -34,13 +34,9 @@ class ItemCard extends StatelessWidget {
                       style: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.w600),
                     ),
-                    Text(
-                      character.status ?? '',
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                      style: const TextStyle(
-                          fontSize: 12, fontWeight: FontWeight.w200),
-                    ),
+                    CharacteristicItem(
+                        icon: Icons.south_america,
+                        text: character.location?.name ?? ''),
                     const Divider(
                       thickness: 0.25,
                     ),
@@ -48,11 +44,13 @@ class ItemCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CharacteristicItem(
-                            icon: Icons.south_america,
-                            text: character.location?.name ?? ''),
+                            icon: character.gender == 'Male'
+                                ? Icons.male
+                                : Icons.female,
+                            text: character.gender ?? ''),
                         CharacteristicItem(
-                            icon: Icons.co_present_rounded,
-                            text: 'Type: ${character.type}'),
+                            icon: Icons.monitor_heart,
+                            text: 'Status: ${character.status}'),
                       ],
                     )
                   ],
