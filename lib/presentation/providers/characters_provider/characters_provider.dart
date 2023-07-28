@@ -21,4 +21,9 @@ class CharactersProvider extends ChangeNotifier {
     initialLoading = false;
     notifyListeners();
   }
+
+  Future<void> reload() async {
+    errorMessage = '';
+    getCharacters();
+  }
 }
