@@ -10,6 +10,12 @@ void main() async {
       CharactersRepositoryImpl(
           charactersDatasource: CharactersDatasourceImpl());
 
+  final EpisodesRepositoryImpl episodesRepositoryImpl =
+      EpisodesRepositoryImpl(episodesDatasource: EpisodesDatasourceImpl());
+
+  final LocationsRepositoryImpl locationsRepositoryImpl =
+      LocationsRepositoryImpl(locationsDatasource: LocationsDatasourceImpl());
+
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => ThemeProvider(isDarkMode: false)),
     ChangeNotifierProvider(
@@ -17,6 +23,16 @@ void main() async {
         create: (_) =>
             CharactersProvider(charactersRepository: charactersRepositoryImpl)
               ..getCharacters()),
+    ChangeNotifierProvider(
+        lazy: false,
+        create: (_) =>
+            EpisodesProvider(episodesRepository: episodesRepositoryImpl)
+              ..getEpisodes()),
+    ChangeNotifierProvider(
+        lazy: false,
+        create: (_) =>
+            LocationsProvider(locationsRepository: locationsRepositoryImpl)
+              ..getLocations()),
   ], child: const MyApp()));
 }
 
