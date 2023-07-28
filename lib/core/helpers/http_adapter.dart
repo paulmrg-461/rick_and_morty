@@ -15,6 +15,7 @@ class HttpAdapter {
       if (response.statusCode == 200) {
         return json.decode(response.body);
       }
+
       throw ApiException(
           statusCode: response.statusCode,
           message: 'Error to load REST API data: ${response.reasonPhrase}');

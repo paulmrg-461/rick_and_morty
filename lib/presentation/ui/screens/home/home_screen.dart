@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_and_morty/presentation/providers/providers.dart';
-import 'package:rick_and_morty/presentation/ui/views/characters/characters_view.dart';
+import 'package:rick_and_morty/presentation/ui/views/views.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
               icon: const Icon(Icons.search_outlined)),
         ],
       ),
-      body: const CharactersView(),
+      body: const EpisodesView(),
     );
   }
 }

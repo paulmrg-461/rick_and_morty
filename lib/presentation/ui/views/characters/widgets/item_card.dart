@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:rick_and_morty/config/constants/environment.dart';
 import 'package:rick_and_morty/domain/entities/character_entity.dart';
 import 'package:rick_and_morty/presentation/ui/shared/shared.dart';
-import 'package:rick_and_morty/presentation/ui/views/characters/widgets/characteristic_item.dart';
 
 class ItemCard extends StatelessWidget {
   final CharacterEntity character;
