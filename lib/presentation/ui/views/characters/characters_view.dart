@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_and_morty/presentation/providers/providers.dart';
 import 'package:rick_and_morty/presentation/ui/shared/shared.dart';
-import 'package:rick_and_morty/presentation/ui/views/characters/widgets/cards_listview.dart';
+import 'package:rick_and_morty/presentation/ui/views/characters/widgets/characters_listview.dart';
 
 class CharactersView extends StatelessWidget {
   const CharactersView({super.key});
@@ -22,7 +22,8 @@ class CharactersView extends StatelessWidget {
                   }
                   return true;
                 },
-                child: CardsListview(characters: charactersProvider.characters))
+                child: CharactersListview(
+                    characters: charactersProvider.characters))
             : ErrorView(
                 errorMessage: charactersProvider.errorMessage,
                 callback: () => charactersProvider.reload(),

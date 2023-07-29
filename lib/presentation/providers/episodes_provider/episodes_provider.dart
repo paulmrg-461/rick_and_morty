@@ -25,6 +25,15 @@ class EpisodesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<List<EpisodeEntity>> searchEpisodesByName(String name) async {
+    try {
+      return await episodesRepository.searchEpisodesByName(name);
+    } on ApiException catch (e) {
+      print(e);
+    }
+    return [];
+  }
+
   void incrementCurrentPage() {
     currentPage++;
     getEpisodes();

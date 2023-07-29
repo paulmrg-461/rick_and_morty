@@ -10,4 +10,8 @@ class EpisodesRepositoryImpl implements EpisodesRepository {
   @override
   Future<List<EpisodeEntity>> getEpisodesByPage(int page) =>
       episodesDatasource.getEpisodesByPage(page);
+
+  @override
+  Future<List<EpisodeEntity>> searchEpisodesByName(String name) =>
+      episodesDatasource.searchEpisodesByName(name);
 }

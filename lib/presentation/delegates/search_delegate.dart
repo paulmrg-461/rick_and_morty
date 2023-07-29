@@ -3,7 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:rick_and_morty/domain/entities/entities.dart';
 import 'package:rick_and_morty/presentation/providers/providers.dart';
 import 'package:rick_and_morty/presentation/ui/shared/shared.dart';
-import 'package:rick_and_morty/presentation/ui/views/characters/widgets/cards_listview.dart';
+import 'package:rick_and_morty/presentation/ui/views/characters/widgets/characters_listview.dart';
+import 'package:rick_and_morty/presentation/ui/views/episodes/widgets/episodes_listview.dart';
 
 class SearchItemsDelegate extends SearchDelegate<dynamic> {
   final String currentView;
@@ -44,8 +45,23 @@ class SearchItemsDelegate extends SearchDelegate<dynamic> {
     final CharactersProvider charactersProvider =
         Provider.of<CharactersProvider>(context);
 
+    final EpisodesProvider episodesProvider =
+        Provider.of<EpisodesProvider>(context);
+
+    Future<List<dynamic>> future =
+        charactersProvider.searchCharactersByName(query);
+
+    switch (currentView) {
+      case 'Characters':
+        future = charactersProvider.searchCharactersByName(query);
+        break;
+      case 'Episodes':
+        future = episodesProvider.searchEpisodesByName(query);
+        break;
+    }
+
     return FutureBuilder<List<dynamic>>(
-      future: charactersProvider.searchCharactersByName(query),
+      future: future,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return const Center(
@@ -55,12 +71,25 @@ class SearchItemsDelegate extends SearchDelegate<dynamic> {
 
         if (snapshot.hasData) {
           final List<dynamic> items = snapshot.data ?? [];
+          Widget resultsListView = Container();
+
+          switch (currentView) {
+            case 'Characters':
+              resultsListView = CharactersListview(
+                  characters: items as List<CharacterEntity>);
+              break;
+            case 'Episodes':
+              resultsListView =
+                  EpisodesListview(episodes: items as List<EpisodeEntity>);
+              break;
+          }
+
           return items.isEmpty
               ? const Center(
                   child:
                       ErrorView(errorMessage: 'Search results were not found.'),
                 )
-              : CardsListview(characters: items as List<CharacterEntity>);
+              : resultsListView;
         }
 
         return const Center(

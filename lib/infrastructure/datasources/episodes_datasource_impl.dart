@@ -11,4 +11,11 @@ class EpisodesDatasourceImpl implements EpisodesDatasource {
     final List episodes = response['results'] as List;
     return episodes.map((episode) => EpisodeEntity.fromJson(episode)).toList();
   }
+
+  @override
+  Future<List<EpisodeEntity>> searchEpisodesByName(String name) async {
+    final response = await httpAdapter.httpGet(uri: '/episode/?name=$name');
+    final List episodes = response['results'] as List;
+    return episodes.map((episode) => EpisodeEntity.fromJson(episode)).toList();
+  }
 }

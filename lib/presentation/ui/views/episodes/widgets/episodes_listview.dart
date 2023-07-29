@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:rick_and_morty/domain/entities/entities.dart';
 import 'package:rick_and_morty/presentation/ui/views/episodes/widgets/item_card.dart';
 
-class CardsListview extends StatelessWidget {
+class EpisodesListview extends StatelessWidget {
   final List<EpisodeEntity> episodes;
-  const CardsListview({super.key, required this.episodes});
+  const EpisodesListview({super.key, required this.episodes});
 
   @override
   Widget build(BuildContext context) {
