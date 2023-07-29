@@ -67,6 +67,7 @@ This Flutter project is optimized to run on Android and iOS devices but was test
 ## _Google Drive Folder_
 <a href="https://drive.google.com/drive/folders/1QHKRBr1v8WMCooH7kt33vk84fe6B7MLC?usp=sharing" target="_blank">See all assets on Drive Folde</a>
 
+## _Developer information_
 Developed by:
 Paul Realpe
 
