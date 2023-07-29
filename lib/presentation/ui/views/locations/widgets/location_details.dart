@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:rick_and_morty/domain/entities/entities.dart';
 import 'package:rick_and_morty/presentation/ui/shared/shared.dart';
 
-class EpisodeDetails extends StatelessWidget {
-  final EpisodeEntity episode;
-  const EpisodeDetails({super.key, required this.episode});
+class LocationDetails extends StatelessWidget {
+  final LocationEntity location;
+  const LocationDetails({super.key, required this.location});
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +23,12 @@ class EpisodeDetails extends StatelessWidget {
               children: [
                 CharacteristicItem(
                   icon: Icons.star_outline_rounded,
-                  text: 'Episode: ${episode.episode}',
+                  text: 'Type: ${location.type}',
                   isBigger: true,
                 ),
                 CharacteristicItem(
-                  icon: Icons.calendar_month,
-                  text: 'Air date: ${episode.airDate}',
+                  icon: Icons.south_america_outlined,
+                  text: location.dimension ?? '',
                   isBigger: true,
                 ),
                 const Padding(
@@ -49,7 +49,7 @@ class EpisodeDetails extends StatelessWidget {
               ],
             ),
           ),
-          AvatarsRow(charactersImg: episode.characters ?? []),
+          AvatarsRow(charactersImg: location.residents ?? []),
         ],
       ),
     );

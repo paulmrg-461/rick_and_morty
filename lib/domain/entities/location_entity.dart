@@ -54,7 +54,8 @@ class LocationEntity {
         dimension: json["dimension"],
         residents: json["residents"] == null
             ? []
-            : List<String>.from(json["residents"]!.map((x) => x)),
+            : List<String>.from(json["residents"]!
+                .map((x) => x.replaceAll('character/', 'character/avatar/'))),
         url: json["url"],
         created:
             json["created"] == null ? null : DateTime.parse(json["created"]),
