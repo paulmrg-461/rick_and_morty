@@ -5,6 +5,7 @@ import 'package:rick_and_morty/presentation/providers/providers.dart';
 import 'package:rick_and_morty/presentation/ui/shared/shared.dart';
 import 'package:rick_and_morty/presentation/ui/views/characters/widgets/characters_listview.dart';
 import 'package:rick_and_morty/presentation/ui/views/episodes/widgets/episodes_listview.dart';
+import 'package:rick_and_morty/presentation/ui/views/locations/widgets/locations_listview.dart';
 
 class SearchItemsDelegate extends SearchDelegate<dynamic> {
   final String currentView;
@@ -48,6 +49,9 @@ class SearchItemsDelegate extends SearchDelegate<dynamic> {
     final EpisodesProvider episodesProvider =
         Provider.of<EpisodesProvider>(context);
 
+    final LocationsProvider locationsProvider =
+        Provider.of<LocationsProvider>(context);
+
     Future<List<dynamic>> future =
         charactersProvider.searchCharactersByName(query);
 
@@ -57,6 +61,9 @@ class SearchItemsDelegate extends SearchDelegate<dynamic> {
         break;
       case 'Episodes':
         future = episodesProvider.searchEpisodesByName(query);
+        break;
+      case 'Locations':
+        future = locationsProvider.searchLocationsByName(query);
         break;
     }
 
@@ -71,7 +78,7 @@ class SearchItemsDelegate extends SearchDelegate<dynamic> {
 
         if (snapshot.hasData) {
           final List<dynamic> items = snapshot.data ?? [];
-          Widget resultsListView = Container();
+          Widget resultsListView = const SizedBox();
 
           switch (currentView) {
             case 'Characters':
@@ -82,12 +89,16 @@ class SearchItemsDelegate extends SearchDelegate<dynamic> {
               resultsListView =
                   EpisodesListview(episodes: items as List<EpisodeEntity>);
               break;
+            case 'Locations':
+              resultsListView =
+                  LocationsListview(locations: items as List<LocationEntity>);
+              break;
           }
 
           return items.isEmpty
-              ? const Center(
+              ? Center(
                   child:
-                      ErrorView(errorMessage: 'Search results were not found.'),
+                      ErrorView(errorMessage: '$currentView were not found.'),
                 )
               : resultsListView;
         }

@@ -13,4 +13,13 @@ class LocationsDatasourceImpl implements LocationsDatasource {
         .map((location) => LocationEntity.fromJson(location))
         .toList();
   }
+
+  @override
+  Future<List<LocationEntity>> searchLocationsByName(String name) async {
+    final response = await httpAdapter.httpGet(uri: '/location/?name=$name');
+    final List locations = response['results'] as List;
+    return locations
+        .map((location) => LocationEntity.fromJson(location))
+        .toList();
+  }
 }

@@ -10,4 +10,8 @@ class LocationsRepositoryImpl implements LocationsRepository {
   @override
   Future<List<LocationEntity>> getLocationsByPage(int page) =>
       locationsDatasource.getLocationsByPage(page);
+
+  @override
+  Future<List<LocationEntity>> searchLocationsByName(String name) =>
+      locationsDatasource.searchLocationsByName(name);
 }

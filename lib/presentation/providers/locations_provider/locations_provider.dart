@@ -25,6 +25,15 @@ class LocationsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<List<LocationEntity>> searchLocationsByName(String name) async {
+    try {
+      return await locationsRepository.searchLocationsByName(name);
+    } on ApiException catch (e) {
+      print(e);
+    }
+    return [];
+  }
+
   void incrementCurrentPage() {
     currentPage++;
     getLocations();
