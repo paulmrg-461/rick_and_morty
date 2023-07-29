@@ -18,7 +18,9 @@ class LocationsProvider extends ChangeNotifier {
           await locationsRepository.getLocationsByPage(currentPage);
       locations.addAll(newLocations);
     } on ApiException catch (e) {
-      errorMessage = e.message;
+      if (e.message != 'Error to load REST API data: Not Found') {
+        errorMessage = e.message;
+      }
     }
 
     initialLoading = false;

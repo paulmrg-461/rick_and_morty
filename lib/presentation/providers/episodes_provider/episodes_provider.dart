@@ -18,7 +18,9 @@ class EpisodesProvider extends ChangeNotifier {
           await episodesRepository.getEpisodesByPage(currentPage);
       episodes.addAll(newEpisodes);
     } on ApiException catch (e) {
-      errorMessage = e.message;
+      if (e.message != 'Error to load REST API data: Not Found') {
+        errorMessage = e.message;
+      }
     }
 
     initialLoading = false;

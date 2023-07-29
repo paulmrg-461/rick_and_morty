@@ -18,7 +18,9 @@ class CharactersProvider extends ChangeNotifier {
           await charactersRepository.getCharactersByPage(currentPage);
       characters.addAll(newCharacters);
     } on ApiException catch (e) {
-      errorMessage = e.message;
+      if (e.message != 'Error to load REST API data: Not Found') {
+        errorMessage = e.message;
+      }
     }
 
     initialLoading = false;
