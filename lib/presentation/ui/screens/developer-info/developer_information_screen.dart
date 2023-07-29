@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:rick_and_morty/presentation/ui/screens/developer-info/widgets/social_buttons.dart';
+import 'package:rick_and_morty/presentation/ui/shared/shared.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DeveloperInformationScreen extends StatelessWidget {
@@ -16,12 +17,8 @@ class DeveloperInformationScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 8),
-                height: 125,
-                child: const Image(
-                    image: AssetImage('assets/icons/rick-and-morty.png')),
-              ),
+              const CustomAssetImage(
+                  path: 'assets/icons/rick-and-morty.png', height: 125),
               _titleText('Rick & Morty App'),
               FutureBuilder(
                   future: getAppVersion(),

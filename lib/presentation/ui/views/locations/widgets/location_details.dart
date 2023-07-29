@@ -11,16 +11,11 @@ class LocationDetails extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 8),
-            height: 236,
-            child: const Image(
-                image: AssetImage('assets/icons/rick-and-morty.png')),
-          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             child: Column(
               children: [
+                const CustomAssetImage(path: 'assets/icons/rick-and-morty.png'),
                 CharacteristicItem(
                   icon: Icons.star_outline_rounded,
                   text: 'Type: ${location.type}',
