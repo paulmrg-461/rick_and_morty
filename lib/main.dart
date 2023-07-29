@@ -18,6 +18,7 @@ void main() async {
 
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => ThemeProvider(isDarkMode: false)),
+    ChangeNotifierProvider(create: (_) => HomeProvider()),
     ChangeNotifierProvider(
         lazy: false,
         create: (_) =>
