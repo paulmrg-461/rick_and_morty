@@ -25,6 +25,15 @@ class CharactersProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<List<CharacterEntity>> searchCharactersByName(String name) async {
+    try {
+      return await charactersRepository.searchCharactersByName(name);
+    } on ApiException catch (e) {
+      print(e);
+    }
+    return [];
+  }
+
   void incrementCurrentPage() {
     currentPage++;
     getCharacters();

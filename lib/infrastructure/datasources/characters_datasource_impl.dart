@@ -13,4 +13,13 @@ class CharactersDatasourceImpl implements CharactersDatasource {
         .map((character) => CharacterEntity.fromJson(character))
         .toList();
   }
+
+  @override
+  Future<List<CharacterEntity>> searchCharactersByName(String name) async {
+    final response = await httpAdapter.httpGet(uri: '/character/?name=$name');
+    final List characters = response['results'] as List;
+    return characters
+        .map((character) => CharacterEntity.fromJson(character))
+        .toList();
+  }
 }

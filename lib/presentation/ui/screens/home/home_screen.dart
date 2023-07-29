@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rick_and_morty/presentation/delegates/search_delegate.dart';
 import 'package:rick_and_morty/presentation/providers/providers.dart';
 import 'package:rick_and_morty/presentation/ui/screens/home/widgets/category_items.dart';
 
@@ -24,7 +25,9 @@ class HomeScreen extends StatelessWidget {
                   : const Icon(Icons.dark_mode_outlined)),
           IconButton(
               tooltip: 'Search',
-              onPressed: () {},
+              onPressed: () => showSearch(
+                  context: context,
+                  delegate: SearchItemsDelegate(homeProvider.currentView)),
               icon: const Icon(Icons.search_outlined)),
         ],
       ),

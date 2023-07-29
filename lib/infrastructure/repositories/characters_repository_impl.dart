@@ -10,4 +10,7 @@ class CharactersRepositoryImpl implements CharactersRepository {
   @override
   Future<List<CharacterEntity>> getCharactersByPage(int page) =>
       charactersDatasource.getCharactersByPage(page);
+  @override
+  Future<List<CharacterEntity>> searchCharactersByName(String name) =>
+      charactersDatasource.searchCharactersByName(name);
 }
