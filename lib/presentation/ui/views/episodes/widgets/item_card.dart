@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty/domain/entities/entities.dart';
+import 'package:rick_and_morty/presentation/ui/screens/screens.dart';
 import 'package:rick_and_morty/presentation/ui/shared/shared.dart';
+import 'package:rick_and_morty/presentation/ui/views/episodes/widgets/episode_details.dart';
 
 class ItemCard extends StatelessWidget {
   final EpisodeEntity episode;
@@ -38,7 +40,13 @@ class ItemCard extends StatelessWidget {
               ],
             ),
           ),
-          onTap: () {},
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailScreen(
+                    title: episode.name ?? '',
+                    widget: EpisodeDetails(episode: episode)),
+              )),
         ),
       ),
     );

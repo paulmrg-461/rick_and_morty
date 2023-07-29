@@ -3,6 +3,7 @@ import 'package:rick_and_morty/config/constants/environment.dart';
 import 'package:rick_and_morty/domain/entities/character_entity.dart';
 import 'package:rick_and_morty/presentation/ui/screens/screens.dart';
 import 'package:rick_and_morty/presentation/ui/shared/shared.dart';
+import 'package:rick_and_morty/presentation/ui/views/characters/widgets/character_details.dart';
 
 class ItemCard extends StatelessWidget {
   final CharacterEntity character;
@@ -61,7 +62,9 @@ class ItemCard extends StatelessWidget {
           onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => DetailScreen(character: character),
+                builder: (context) => DetailScreen(
+                    title: character.name ?? '',
+                    widget: CharacterDetails(character: character)),
               )),
         ),
       ),

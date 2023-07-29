@@ -54,7 +54,9 @@ class EpisodeEntity {
         episode: json["episode"],
         characters: json["characters"] == null
             ? []
-            : List<String>.from(json["characters"]!.map((x) => x)),
+            : List<String>.from(json["characters"]!.map((x) => x.replaceAll(
+                'https://rickandmortyapi.com/api/character/',
+                'https://rickandmortyapi.com/api/character/avatar/'))),
         url: json["url"],
         created:
             json["created"] == null ? null : DateTime.parse(json["created"]),
